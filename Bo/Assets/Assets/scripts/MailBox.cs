@@ -6,18 +6,20 @@ public class MailBox : MonoBehaviour
 {
     public GameObject newsPaper;
 
-    // Start is called before the first frame update
+    bool wasHit;
+
+    //collider contact voor score
     private void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("NewsPaper"))
         {
-            //score systeem
+            if (!wasHit)
+            {
+                newsPaper.SetActive(true);
+                //score systeem
+                ScoreManager.instance.AddPoint();
+            }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

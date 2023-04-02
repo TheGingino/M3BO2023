@@ -5,19 +5,14 @@ using UnityEngine;
 public class Camera : MonoBehaviour
 {
     public GameObject Cube;
-    private Vector3 offset = new Vector3(0, 5, -7);
+    private Vector3 offset = new Vector3(18, 9, 4);
     internal static object main;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+   
     // Update is called once per frame
     void LateUpdate()
     {
-        //offset behind player position
+        //offset voor een diagonale 3rd person zicht
         transform.position = Cube.transform.position + offset;
     }
 
