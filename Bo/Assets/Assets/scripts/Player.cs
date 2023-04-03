@@ -112,5 +112,11 @@ public class Player : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
     }
+
+    void React()
+    {
+        transform.position = new Vector3(180, 1.38f, 175);
+    }
+
 }
 
