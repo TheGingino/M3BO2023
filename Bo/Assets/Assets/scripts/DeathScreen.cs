@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class DeathScreen : MonoBehaviour
 {
     public GameObject gameOverUI;
-    public Text pointsText;
+    public AudioSource A;
 
     // Start is called before the first frame update
-    public void Setup(int score)
+    public void Setup()
     {
         gameObject.SetActive(true);
-        pointsText.text = score.ToString() + " POINTS";
         ScoreManager.instance.UpdatePoint();
+        A.Play();
     }
-
+    //deze laden de specifieke scenes
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

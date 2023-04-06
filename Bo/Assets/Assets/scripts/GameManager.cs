@@ -35,8 +35,7 @@ public class GameManager : MonoBehaviour
             //laat death zien
             gameManager.gameOver();
             //disable player manager
-            p.enabled= false;
-            
+            p.enabled= false; 
         }
     }
 }

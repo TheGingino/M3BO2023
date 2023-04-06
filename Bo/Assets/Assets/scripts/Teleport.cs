@@ -11,6 +11,4 @@ public class Teleport : MonoBehaviour
     {
         Player.transform.position = Target.transform.position;
     }
-
-
 }

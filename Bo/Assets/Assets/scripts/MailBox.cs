@@ -5,6 +5,7 @@ using UnityEngine;
 public class MailBox : MonoBehaviour
 {
     public GameObject newsPaper;
+    public AudioSource mail;
 
     bool wasHit;
 
@@ -18,6 +19,7 @@ public class MailBox : MonoBehaviour
                 newsPaper.SetActive(true);
                 //score systeem
                 ScoreManager.instance.AddPoint();
+                mail.Play();
             }
         }
 

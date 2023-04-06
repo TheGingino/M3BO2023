@@ -9,6 +9,10 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    //muziek
+    public AudioSource AudioSource;
+    public AudioSource Play;
+
     //movement
     public float speed = 2f;
     float min_speed = 2f;
@@ -23,7 +27,7 @@ public class Player : MonoBehaviour
     const int max_amount = 10;
     int current_Amount = 10;
     public GameObject spawnPoint;
-    float force = 8f;
+    float force = 10f;
 
 
     //Health
@@ -38,9 +42,9 @@ public class Player : MonoBehaviour
         angles = transform.eulerAngles;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        AudioSource.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
@@ -84,14 +88,11 @@ public class Player : MonoBehaviour
             {
                 GameObject news = Instantiate(NewsPaper,spawnPoint.transform.position, spawnPoint.transform.rotation);
                 Rigidbody rb= news.GetComponent<Rigidbody>();
-                rb.AddForce(spawnPoint.transform.forward * force, ForceMode.Impulse);
+                rb.AddForce(-spawnPoint.transform.right * force, ForceMode.Impulse);
                 rb.AddTorque(new Vector3(0, UnityEngine. Random.Range(0,150), 0));
             }
-            //spawn
+            //spawn  
         }
-
-
-        
     }
 
     //collision voor de obstakels en Health system
@@ -111,12 +112,6 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+        Play.Play();
     }
-
-    void React()
-    {
-        transform.position = new Vector3(180, 1.38f, 175);
-    }
-
 }
-

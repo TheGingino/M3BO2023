@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score = 0;
     public int maxScore;
+    public GameObject Canvas;
     
     private void Awake()
     {
@@ -28,12 +29,13 @@ public class ScoreManager : MonoBehaviour
     {
         score += 100;
         scoreText.text = score.ToString();
+        Canvas.GetComponent<TextMeshProUGUI>().text = "Score: " + scoreText.text;
 
     }
 
     public void UpdatePoint()
     {
         scoreText.text = score.ToString();
-
+        Canvas.GetComponent<TextMeshProUGUI>().text = scoreText.text;
     }
 }
