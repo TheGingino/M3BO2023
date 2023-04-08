@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public AudioSource Play;
 
     //movement
-    public float speed = 2f;
-    float min_speed = 2f;
-    float max_speed = 4f;
+    public float speed = 4f;
+    float min_speed = 4f;
+    float max_speed = 6f;
 
     float rotationSpeed = 100f;
     Vector3 angles;
@@ -42,23 +42,23 @@ public class Player : MonoBehaviour
         angles = transform.eulerAngles;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        AudioSource.Play();
+        AudioSource.Play();//muziek player
     }
 
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;//laat het object automatisch al bewegen
         
 
         //key indrukken
         if (Input.GetKey(KeyCode.W))
         {
-            speed = max_speed;
+            speed = max_speed; //als je op W drukt ga je sneller
         }
         //key loslaten
         if (Input.GetKeyUp(KeyCode.W))
         {
-            speed = min_speed;
+            speed = min_speed;//je gaat weer naar het min speed
         }
 
         //je draait naar links
@@ -69,14 +69,14 @@ public class Player : MonoBehaviour
             //transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
             //}
             angles.y -= rotationSpeed * Time.deltaTime;
-            angles.y = Mathf.Clamp(angles.y, -30, 30);
+            angles.y = Mathf.Clamp(angles.y, -30, 30);//geeft een max rotation waarde zodat het niet helemaal rond kan draaien
         }
 
         //je draait naar rechts
         if (Input.GetKey(KeyCode.D))//right arrow key
         {
             angles.y += rotationSpeed * Time.deltaTime;
-            angles.y = Mathf.Clamp(angles.y, -30, 30);
+            angles.y = Mathf.Clamp(angles.y, -30, 30);//geeft een max rotation waarde zodat het niet helemaal rond kan draaien
         }
         transform.rotation = Quaternion.Euler(angles);
 
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
                 GameObject news = Instantiate(NewsPaper,spawnPoint.transform.position, spawnPoint.transform.rotation);
                 Rigidbody rb= news.GetComponent<Rigidbody>();
                 rb.AddForce(-spawnPoint.transform.right * force, ForceMode.Impulse);
-                rb.AddTorque(new Vector3(0, UnityEngine. Random.Range(0,150), 0));
+                rb.AddTorque(new Vector3(0, UnityEngine. Random.Range(0,150), 0)); //door dit kan je een object clonen en gooien naar links
             }
             //spawn  
         }
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
         {
             GameManager.Instance.LoseLive(this);
             col.gameObject.SetActive(false);
-            TakeDamage(1);
+            TakeDamage(1); // geeft damage als je een trap object raakt
         }
     }
 
@@ -112,6 +112,6 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
-        Play.Play();
+        Play.Play(); // zet de healthbar actief met de hoeveelheid hp in een bar
     }
 }

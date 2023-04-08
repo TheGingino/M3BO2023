@@ -17,11 +17,10 @@ public class MailBox : MonoBehaviour
             if (!wasHit)
             {
                 newsPaper.SetActive(true);
-                //score systeem
-                ScoreManager.instance.AddPoint();
                 mail.Play();
+                //score systeem
+                ScoreManager.instance.AddPoint(); //geeft punten als je de mailbox raakt
             }
         }
-
     }
 }

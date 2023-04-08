@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        A.Play();
+        A.Play();//door dit begint het muziek met spelen
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
-        A.Stop();
+        A.Stop();// stopt het muziek
     }
 
     public void EndGame()

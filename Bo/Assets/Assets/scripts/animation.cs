@@ -23,4 +23,6 @@ public class animation : MonoBehaviour
     {
         speed = -Input.GetAxis("Horizontal");
     }
+
+    // nutteloos in dit project
 }

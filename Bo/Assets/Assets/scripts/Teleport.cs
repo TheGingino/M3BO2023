@@ -9,6 +9,6 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player.transform.position = Target.transform.position;
+        Player.transform.position = Target.transform.position; // brengt je terug naar het begin als je bij het einde komt
     }
 }
