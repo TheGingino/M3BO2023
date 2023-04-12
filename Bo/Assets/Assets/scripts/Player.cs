@@ -24,11 +24,12 @@ public class Player : MonoBehaviour
 
     //NewsPaper
     public GameObject NewsPaper;
-    const int max_amount = 10;
-    int current_Amount = 10;
     public GameObject spawnPoint;
     float force = 10f;
 
+    //Timer
+    float delay = 1.0f;
+    private float timer = 0.0f;
 
     //Health
     public int maxHealth = 3;
@@ -64,10 +65,6 @@ public class Player : MonoBehaviour
         //je draait naar links
         if (Input.GetKey(KeyCode.A))//left arrow key
         {
-            //{
-            //Quaternion.Euler(0, -rotationSpeed * Time.deltaTime, 0);
-            //transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
-            //}
             angles.y -= rotationSpeed * Time.deltaTime;
             angles.y = Mathf.Clamp(angles.y, -30, 30);//geeft een max rotation waarde zodat het niet helemaal rond kan draaien
         }
@@ -80,21 +77,27 @@ public class Player : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(angles);
 
-        //krant gooien script
-        if(Input.GetKeyDown(KeyCode.Space))//als je genoeg hebt
+        timer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))//als je genoeg hebt
         {
-            //check eerst of je genoeg hebt
-            if(current_Amount > 0)
+            if(timer > delay)
             {
-                GameObject news = Instantiate(NewsPaper,spawnPoint.transform.position, spawnPoint.transform.rotation);
-                Rigidbody rb= news.GetComponent<Rigidbody>();
-                rb.AddForce(-spawnPoint.transform.right * force, ForceMode.Impulse);
-                rb.AddTorque(new Vector3(0, UnityEngine. Random.Range(0,150), 0)); //door dit kan je een object clonen en gooien naar links
+                Shoot();
+                timer = 0.0f;
             }
-            //spawn  
         }
     }
 
+    public void Shoot()
+    {
+        //krant gooien
+            
+        GameObject news = Instantiate(NewsPaper,spawnPoint.transform.position, spawnPoint.transform.rotation);
+        Rigidbody rb= news.GetComponent<Rigidbody>();
+        rb.AddForce(-spawnPoint.transform.right * force, ForceMode.Impulse);
+        rb.AddTorque(new Vector3(0, UnityEngine. Random.Range(0,150), 0)); //door dit kan je een object clonen en gooien naar links
+           
+    }
     //collision voor de obstakels en Health system
     void OnTriggerEnter(Collider col)
     {

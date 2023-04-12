@@ -16,7 +16,7 @@ public class Destroy : MonoBehaviour
     {
         if (gameObject.name == "Newspaper(Clone)")
         {
-            Destroy(gameObject, 2); //vernietigt het object na 2 seconden
+            Destroy(gameObject, 1); //vernietigt het object na 2 seconden
         }
     }
 }
