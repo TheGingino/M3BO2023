@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    public AudioSource power;
     public float Mulitply =3f;
     public float duration = 5f;
 
@@ -14,6 +15,7 @@ public class PowerUp : MonoBehaviour
         {
             StartCoroutine(pickup(other));
         }
+        power.Play();
     }
     
     IEnumerator pickup(Collider player)
@@ -30,7 +32,5 @@ public class PowerUp : MonoBehaviour
         player.transform.localScale /= Mulitply;
         speed.max_speed /= Mulitply;
         Destroy(gameObject);
-        
-        Debug.Log("EEEEEEE");
     }
 }
