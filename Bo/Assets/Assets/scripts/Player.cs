@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
 
     //movement
     public float speed = 4f;
-    float min_speed = 4f;
-    float max_speed = 6f;
+    public float min_speed = 4f;
+    public float max_speed = 6f;
 
     float rotationSpeed = 100f;
     Vector3 angles;
