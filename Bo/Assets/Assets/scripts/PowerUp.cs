@@ -8,7 +8,16 @@ public class PowerUp : MonoBehaviour
     public float Mulitply =3f;
     public float duration = 5f;
 
+    //rotation
+    float rot;
+
     // Start is called before the first frame update
+    private void Update()
+    {
+        rot += Time.deltaTime * 100;
+        transform.rotation = Quaternion.Euler(rot, rot, rot);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

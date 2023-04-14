@@ -17,10 +17,8 @@ public class Player : MonoBehaviour
     public float speed = 4f;
     public float min_speed = 4f;
     public float max_speed = 6f;
-
     float rotationSpeed = 100f;
     Vector3 angles;
-
 
     //NewsPaper
     public GameObject NewsPaper;
