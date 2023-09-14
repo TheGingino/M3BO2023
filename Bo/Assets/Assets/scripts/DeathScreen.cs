@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-    public GameObject gameOverUI;
-    public GameObject UI;
+    public GameObject[] ui;
+    
     public AudioSource A;
 
     // Start is called before the first frame update
@@ -31,8 +31,8 @@ public class DeathScreen : MonoBehaviour
 
     public void gameOver()
     {
-        gameOverUI.SetActive(true);
-        UI.SetActive(false);
+        ui[0].SetActive(true);
+        ui[1].SetActive(false);
     }
 
 }
